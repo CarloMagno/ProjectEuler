@@ -16,9 +16,8 @@ def criba_eratostenes(n):
     return res
 
 def isPrime(n):
-    if n == 0:
+    if n <= 0:
         return False
-    
     if n == 1:
         return True
     elif n < 4:
@@ -42,8 +41,8 @@ def isPrime(n):
     
 def numTerminosPrimos(a,b):
     finish = False
-    n = 0
-    res = 0
+    res = 1
+    n = 1
     while not finish:
         val = n**2+a*n+b
         if isPrime(val):
@@ -59,12 +58,7 @@ def reto27():
     maxA = 0
     maxB = 0
     conjuntoB = []
-    conjuntoB = criba_eratostenes(1000)
-#    for elem in criba_eratostenes(1000):
-#        conjuntoB.append(-elem)
-#        conjuntoB.append(elem)
-#    conjuntoB = sorted(conjuntoB)
-    
+    conjuntoB = criba_eratostenes(1000)    
     for a in range(-1000,1000):
         for b in conjuntoB:
             num = numTerminosPrimos(a,b)
@@ -81,4 +75,5 @@ def reto27():
 if __name__ == '__main__':
     ini = time()
     reto27()
+    #numTerminosPrimos(-999,61)
     print "Tiempo =",time()-ini,"sg"
